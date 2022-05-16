@@ -3,6 +3,7 @@ import {Flex, Text, IconButton, Divider, Avatar, Heading} from '@chakra-ui/react
 import {FiMenu, FiHome} from 'react-icons/fi'
 import {FaHistory} from 'react-icons/fa'
 import {MdExplore, MdPlaylistAdd, MdWatchLater} from 'react-icons/md'
+import {AiFillLike} from 'react-icons/ai'
 import NavItem from '../components/NavItem'
 
 const Sidebar = () => {
@@ -41,6 +42,7 @@ const Sidebar = () => {
                 <NavItem navSize={navSize} icon={FiHome} title="Home" />
                 <NavItem navSize={navSize} icon={MdExplore} title="Explore" />
                 <NavItem navSize={navSize} icon={MdPlaylistAdd} title="PlayList" />
+                <NavItem navSize={navSize} icon={AiFillLike} title="Liked" />
                 <NavItem navSize={navSize} icon={MdWatchLater} title="Watch Later" />
                 <NavItem navSize={navSize} icon={FaHistory} title="History" />
             </Flex>

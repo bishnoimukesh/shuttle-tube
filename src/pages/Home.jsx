@@ -1,10 +1,14 @@
-import {Navbar, Sidebar} from '../components/index'
+import { Box } from '@chakra-ui/react'
+import {Navbar, Sidebar, Card} from '../components/index'
 
 const Home = () => {
     return (
         <>
-            <Navbar/>
-            <Sidebar/>
+            {/* <Navbar/> */}
+            <Box display="flex" >
+                <Sidebar/>
+                <Card />
+            </Box>
         </>
     )
 }

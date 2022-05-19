@@ -11,26 +11,24 @@ const Sidebar = () => {
     return (
         <Flex
             pos="sticky"
-            left="5"
-            h="95vh"
-            marginTop="2.5vh"
-            boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
+            left="2"
+            h="100vh"
+            boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.45)"
             borderRadius={navSize === "small" ? "15px" : "30px"}
-            w={navSize === "small" ? "75px" : "200px"}
+            w={navSize === "small" ? "80px" : "250px"}
             flexDir="column"
             justifyContent="space-between"
         >
             <Flex
-                p="5%"
+                p="2%"
                 flexDir="column"
-                w="100%"
+                mt={'0'}
+                // w="100%"
                 alignItems={navSize === "small" ? "center" : "flex-start"}
-                as="nav"
+                // as="nav"
             >
+                
                 <IconButton
-                    background="none"
-                    mt={5}
-                    _hover={{ background: 'none' }}
                     icon={<FiMenu />}
                     onClick={() => {
                         if (navSize === "small")
@@ -48,7 +46,7 @@ const Sidebar = () => {
             </Flex>
 
             <Flex
-                p="5%"
+                p="2%"
                 flexDir="column"
                 w="100%"
                 alignItems={navSize === "small" ? "center" : "flex-start"}
@@ -58,7 +56,7 @@ const Sidebar = () => {
                 <Flex mt={4} align="center">
                     <Avatar size="sm" src="avatar-1.jpg" />
                     <Flex flexDir="column" ml={4} display={navSize === "small" ? "none" : "flex"}>
-                        <Heading as="h3" size="sm">Sylwia Weller</Heading>
+                        <Heading as="h3" size="sm">Mukesh Bishnoi</Heading>
                         <Text color="gray">Admin</Text>
                     </Flex>
                 </Flex>

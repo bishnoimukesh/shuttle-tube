@@ -2,28 +2,28 @@ import { Server, Model, RestSerializer } from "miragejs";
 import {
   loginHandler,
   signupHandler,
-} from "./src/backend/controllers/AuthController";
+} from "./backend/controllers/AuthController";
 import {
   getHistoryVideosHandler,
   addVideoToHistoryHandler,
   removeVideoFromHistoryHandler,
   clearHistoryHandler,
-} from "./src/backend/controllers/HistoryController";
+} from "./backend/controllers/HistoryController";
 import {
   getAllVideosHandler,
   getVideoHandler,
-} from "./src/backend/controllers/VideoController";
-import { videos } from "./src/backend/db/videos";
-import { categories } from "./src/backend/db/categories";
+} from "./backend/controllers/VideoController";
+import { videos } from "./backend/db/videos";
+import { categories } from "./backend/db/categories";
 import {
   getAllCategoriesHandler,
   getCategoryHandler,
-} from "./src/backend/controllers/CategoryController";
+} from "./backend/controllers/CategoryController";
 import {
   getLikedVideosHandler,
   addItemToLikedVideos,
   removeItemFromLikedVideos,
-} from "./src/backend/controllers/LikeController";
+} from "./backend/controllers/LikeController";
 import {
   getAllPlaylistsHandler,
   addNewPlaylistHandler,
@@ -31,13 +31,13 @@ import {
   getVideosFromPlaylistHandler,
   addVideoToPlaylistHandler,
   removeVideoFromPlaylistHandler,
-} from "./src/backend/controllers/PlaylistController";
-import { users } from "./src/backend/db/users";
+} from "./backend/controllers/PlaylistController";
+import { users } from "./backend/db/users";
 import {
   addItemToWatchLaterVideos,
   getWatchLaterVideosHandler,
   removeItemFromWatchLaterVideos,
-} from "./src/backend/controllers/WatchLaterController";
+} from "./backend/controllers/WatchLaterController";
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {

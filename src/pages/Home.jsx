@@ -1,7 +1,9 @@
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Grid, GridItem, Box } from '@chakra-ui/react'
 import {Navbar, Sidebar, Card} from '../components/index'
+import {useVideo} from '../context/videoContext'
 
 const Home = () => {
+    const {videoData} = useVideo();
     return (
         <>
             <Grid h='200px' templateRows='repeat(2, 1fr)'
@@ -13,7 +15,11 @@ const Home = () => {
                         <Navbar/>
                 </GridItem>
                 <GridItem colSpan={4} >
-                        <Card/>
+                    <Box display="flex" alignItems="center" flexWrap={'wrap'}>
+                    {videoData.map(video => (
+                        <Card cardData={video} key={video.id} />
+                    ))}
+                    </Box>
                 </GridItem>
             </Grid>
         </>

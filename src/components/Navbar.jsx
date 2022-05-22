@@ -1,4 +1,4 @@
-import {Box, Button, Heading} from '@chakra-ui/react';
+import {Box, Button, Heading, Input} from '@chakra-ui/react';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 
 const Navbar = () => {
@@ -7,6 +7,7 @@ const Navbar = () => {
             <Box display="flex" alignItems="center" >
                 <Heading>Shuttle-Tube</Heading>
             </Box>
+            <Input htmlSize={26} width='auto' placeholder="Search"/>
             <Box display="flex" alignItems="center">
                 <Button bg="red" size="md">
                     Button

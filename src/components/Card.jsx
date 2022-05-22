@@ -1,11 +1,13 @@
-import {Box, Center, Heading, Text, Stack, Avatar, Image} from '@chakra-ui/react';
+import {Box, Heading, Text, Stack, Avatar, Image} from '@chakra-ui/react';
 
-const Card = () => {
+const Card = ({cardData}) => {
+    console.log(cardData.id);
+    const { _id, title, creator, description, views, uploaded } = cardData;
   return (
-    <Center p={4}>
-        <Box
-        maxW={'280px'}
-        minW={'240px'}
+    <Box p={4} display={'flex'}>
+        <Box borderWidth="1px" 
+        maxW={'280'}
+        minW={'240'}
         w={'full'}
         boxShadow={'2xl'}
         rounded={'md'}
@@ -25,18 +27,16 @@ const Card = () => {
             src={
                 'https://t3.ftcdn.net/jpg/03/10/62/12/360_F_310621281_foEqKBGtGlNWFQRePgdF5BpLOFyTsnzO.jpg'
             }
-            height={'200px'}
+            height={'200'}
             /> 
         </Box>
         <Stack pt={'8'}>
             <Heading
-            fontSize={'xl'}>
-            Shuttle video one
+            fontSize={'xl'} textOverflow={'ellipsis'} whiteSpace={'nowrap'} overflow={'hidden'} height={'6'}>
+            {title}
             </Heading>
-            <Text color={'gray.500'} fontSize={'14'}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua.
+            <Text color={'gray.500'} fontSize={'14'} textOverflow={'ellipsis'} whiteSpace={'wrap'} overflow={'hidden'} height={'20'}>
+                {description}
             </Text>
         </Stack>
         <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
@@ -45,12 +45,12 @@ const Card = () => {
             alt={'Author'}
             />
             <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-                <Text fontWeight={600}>Video author</Text>
-                <Text color={'gray.500'}>{} views · {} months ago</Text>
+                <Text fontWeight={600}>{creator}</Text>
+                <Text color={'gray.500'}>{views} views · {uploaded} months ago</Text>
             </Stack>
         </Stack>
         </Box>
-    </Center>
+    </Box>
     );
 }
 

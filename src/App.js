@@ -2,14 +2,17 @@ import React from 'react';
 import {ChakraProvider,Box, theme} from '@chakra-ui/react';
 import { Routes, Route } from "react-router-dom";
 import MockMan from "mockman-js";
-import {Home} from "./pages/Home"
+import {Home, Login, SignUp} from "./pages"
+import './App.css'
 
 function App() {
   return (
     <ChakraProvider  theme={theme}>
-      <Box fontSize="xl">
+      <Box fontSize="xl" className='layout'>
         <Routes>
           <Route path="/" element={<Home  />} />
+          <Route path="/login" element={<Login  />} />
+          <Route path="/signup" element={<SignUp  />} />
           <Route path="/mock" element={<MockMan  />} />
         </Routes>
       </Box>

@@ -8,10 +8,10 @@ const SignUp = () => {
     return (
         <>
         <Navbar/>
-        <Box display={'flex'} justifyContent={'center'} alignItems={'center'} my={'4'} h={'86vh'}>
+        <Box display={'flex'} justifyContent={'center'} alignItems={'center'} my={'4'} h={'80vh'}>
         <FormControl maxWidth={'500'} mx={'2'} isRequired 
             boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.45)" 
-            border={'20px'} px={'12'} py={'2'} borderRadius={'10'}>
+            border={'20px'} px={'8'} py={'2'} borderRadius={'10'}>
             <FormLabel htmlFor={"firstName"} my={"4"}>
             First Name
             </FormLabel>

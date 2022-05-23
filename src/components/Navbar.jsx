@@ -11,8 +11,12 @@ const Navbar = () => {
             </Box>
             <Input htmlSize={26} width='auto' placeholder="Search" onChange={(e) => VideoDispatch({ type: "FILTER_BY_SEARCH", payload: e.target.value })} />
             <Box display="flex" alignItems="center">
-                <Button bg="red" size="md">
-                    Button
+                <Button
+                    type={"submit"}
+                    colorScheme={"red"}
+                    my={"4"}
+                >
+                    Login
                 </Button>
                 <ColorModeSwitcher fontSize="xl" />
             </Box>

@@ -8,7 +8,7 @@ const Login = () => {
     return (
         <>
             <Navbar/>
-            <Box display={"flex"} justifyContent={"center"} alignItems={'center'} h={'88vh'} >
+            <Box display={"flex"} justifyContent={"center"} alignItems={'center'} h={'80vh'} >
             <FormControl maxWidth={'400'} mx={'2'} isRequired 
             boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.45)" 
             border={'20px'} p={'8'} borderRadius={'10'}>

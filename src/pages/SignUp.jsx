@@ -1,4 +1,4 @@
-import {Box, Button, FormControl, FormLabel, Input, Link} from '@chakra-ui/react';
+import {Box, Button, FormControl, FormLabel, Input, Link, useToast} from '@chakra-ui/react';
 // import { ArrowForwardIcon } from '@chakra-ui/icons';
 import {useReducer} from 'react'
 import { Link as ReachLink, useNavigate } from 'react-router-dom';
@@ -13,17 +13,35 @@ const SignUp = () => {
     const [signUpState, signUpDispatch] = useReducer(signUpReducer, {firstName:"", lastName:"", email: "", password: ""});
     const {firstName, lastName, email, password} = signUpState;
     const navigate = useNavigate();
+    const toast = useToast();
 
-    const submitHandler = async(e, firstName, lastName, email, password) => {
+    const submitHandler = async (e, firstName, lastName, email, password) => {
+        console.log(firstName, lastName, email, password);
         e.preventDefault();
         try {
             const res = await axios.post("api/auth/signup", {firstName, lastName, email, password})
+            console.log("res")
             localStorage.setItem("token", res.data.encodedToken);
             localStorage.setItem("user", JSON.stringify(res.data.createdUser));
             authDispatch({type: "TOKEN_RECEIVED", payload: res.data.encodedToken});
             authDispatch({type: "USER_RECEIVED", payload: res.data.createdUser});
+            toast({
+                title: 'SignUp Successfull!',
+                position: 'top-right',
+                variant: 'solid',
+                status: 'success',
+                duration: 2000,
+                isClosable: true,
+            });
         } catch (error) {
-            console.log(error);
+            toast({
+                title: `${error}`,
+                position: 'top-center',
+                variant: 'solid',
+                status: 'error',
+                duration: 2500,
+                isClosable: true,
+            });
         }finally{
             navigate("/");
         }
@@ -78,6 +96,7 @@ const SignUp = () => {
                 colorScheme={"red"}
                 my={"4"}
                 // rightIcon={<ArrowForwardIcon />}
+                onClick={(e) => submitHandler(e, firstName, lastName, email, password)}
             >
                 Register
             </Button>

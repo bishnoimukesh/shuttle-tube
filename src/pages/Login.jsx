@@ -1,4 +1,4 @@
-import {Box, Button, FormControl, FormLabel, Input, Link} from '@chakra-ui/react';
+import {Box, Button, FormControl, FormLabel, Input, Link, useToast} from '@chakra-ui/react';
 // import { ArrowForwardIcon } from '@chakra-ui/icons';
 import {useReducer} from 'react'
 import { Link as ReachLink, useNavigate } from 'react-router-dom';
@@ -12,6 +12,7 @@ const Login = () => {
     const [loginState, loginDispatch] = useReducer(loginReducer, {email: "", password: ""});
     const {email, password} = loginState;
     const navigate = useNavigate();
+    const toast = useToast();
 
     const submitFormHandler = async(e, email, password) => {
         e.preventDefault();
@@ -22,9 +23,24 @@ const Login = () => {
             authDispatch({type: "LOGIN_SUCCESS"});
             authDispatch({type: "TOKEN_RECEIVED", payload: res.data.encodedToken});
             authDispatch({type: "USER_RECEIVED", payload: res.data.foundUser});
+            toast({
+                title: 'Login Successfull!',
+                position: 'top-center',
+                status: 'success',
+                variant: 'solid',
+                duration: 2000,
+                isClosable: true,
+            });
             navigate("/");
         } catch (error) {
-            console.log(error);
+            toast({
+                title: `${error}`,
+                position: 'top-center',
+                variant: 'solid',
+                status: 'error',
+                duration: 2500,
+                isClosable: true,
+            });
         }
     }
 

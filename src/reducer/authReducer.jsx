@@ -24,7 +24,6 @@ const authReducer = (state, action) => {
 }
 
 const loginReducer = (state, action) => {
-    console.log(action.payload);
     switch (action.type) {
         case "EMAIL_CHANGED":
             return {

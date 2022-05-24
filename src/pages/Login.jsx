@@ -1,5 +1,5 @@
 import {Box, Button, FormControl, FormLabel, Input, Link, useToast} from '@chakra-ui/react';
-// import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 import {useReducer} from 'react'
 import { Link as ReachLink, useNavigate } from 'react-router-dom';
 import { Navbar } from '../components';
@@ -75,7 +75,7 @@ const Login = () => {
                 <Box display={"flex"} alignItems={"center"} justifyContent="space-between">
                 <Button
                     type={"submit"}
-                    // rightIcon={<ArrowForwardIcon />}
+                    rightIcon={<ArrowForwardIcon />}
                     colorScheme={"red"}
                     my={"4"} px={"8"}
                     onClick={(e) => submitFormHandler(e, email, password)}
@@ -88,7 +88,7 @@ const Login = () => {
                 </Box>
                 <Button
                 type={"button"}
-                // rightIcon={<ArrowForwardIcon />}
+                rightIcon={<ArrowForwardIcon />}
                 colorScheme={"red"}
                 my={"4"}
                 onClick={(e) =>

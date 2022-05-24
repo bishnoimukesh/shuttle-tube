@@ -1,5 +1,5 @@
 import {Box, Button, FormControl, FormLabel, Input, Link, useToast} from '@chakra-ui/react';
-// import { ArrowForwardIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 import {useReducer} from 'react'
 import { Link as ReachLink, useNavigate } from 'react-router-dom';
 import { Navbar } from '../components';
@@ -95,7 +95,7 @@ const SignUp = () => {
                 type={"submit"}
                 colorScheme={"red"}
                 my={"4"}
-                // rightIcon={<ArrowForwardIcon />}
+                rightIcon={<ArrowForwardIcon />}
                 onClick={(e) => submitHandler(e, firstName, lastName, email, password)}
             >
                 Register

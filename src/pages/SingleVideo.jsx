@@ -8,7 +8,7 @@ const SingleVideo = () => {
     const { videoData } = useVideo();
     const { videoId } = useParams();
     const video = videoData?.find(({ _id }) => _id === videoId)
-    const {title, description, duration, views, uploaded, categoryName, creator} = video;
+    const {title, description, views, creator} = video;
 
     return (
         <Grid h='200px' templateRows='repeat(2, 1fr)'

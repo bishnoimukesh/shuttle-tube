@@ -8,20 +8,20 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Computer Programming",
+    categoryName: "Tricks",
     description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
+      "A trick shot in badminton can win you a rally. It deceives your opponent to slow down their reaction or send them in the wrong direction. Professionals use trick shots all the time to stay ahead of their competitors.",
   },
   {
     _id: uuid(),
-    categoryName: "Frontend Development",
+    categoryName: "Mistakes",
     description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
+      "Badminton requires regular practice and a strong presence of mind to improve your game. As a beginner, you may come across several wrong techniques and mistakes in your practice. Beginners pick up many wrong badminton techniques, and habits that lead to errors and mistakes.  ",
   },
   {
     _id: uuid(),
-    categoryName: "Backend Development",
+    categoryName: "Smash",
     description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+      "To smash in badminton, start by standing with your feet shoulder-width apart and your knees slightly bent. When the shuttle comes toward you, hold your racket upright and as far back as possible. Then, inhale deeply and and swing your racket to connect with the shuttle at the highest point possible.",
   },
 ];

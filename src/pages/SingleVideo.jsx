@@ -1,8 +1,13 @@
 import { useParams } from 'react-router-dom';
 import {VideoPlayer} from "../components"
 import {useVideo} from "../context/videoContext"
-import {Grid, GridItem, Box, Heading, Text} from "@chakra-ui/react"
+import {Grid, GridItem, Box, Heading, Text, Button} from "@chakra-ui/react"
 import { Navbar, Sidebar} from '../components';
+import {BiLike} from "react-icons/bi"
+// import {AiFillLike} from "react-icons/ai"
+import {BsStopwatch} from "react-icons/bs"
+// import {BsStopwatchFill} from "react-icons/bs"
+import {CgPlayListAdd} from "react-icons/cg"
 
 const SingleVideo = () => {
     const { videoData } = useVideo();
@@ -20,13 +25,22 @@ const SingleVideo = () => {
                         <Navbar/>
                 </GridItem>
                 <GridItem colSpan={4} >
-                    <Box >
+                    <Box ml={'4'} mr={'4'} >
                         <VideoPlayer/>
                         <Box display={'flex'} flexDir={'column'} flexWrap={'wrap'} >
                             <Heading size={'md'} mt={'4'}>{title}</Heading>
-                            <Box display={'flex'} flexWrap={'wrap'} mt={'2'} mb={'2'}>
-                                    <Text fontSize={'sm'}>{views} views</Text>
-                                    <Box ml={'2'}>
+                            <Box display={'flex'} flexWrap={'wrap'} justifyContent={'space-between'} mt={'2'} mb={'2'}>
+                                <Text display={'flex'} alignItems={'center'} fontSize={'sm'}>{views} views</Text>
+                                <Box ml={'2'}>
+                                    <Button bg={'transparent'}>
+                                        <BiLike size={'1.2rem'}/> Like
+                                    </Button>
+                                    <Button bg={'transparent'}>
+                                        <BsStopwatch size={'1rem'}/> Watch Later
+                                    </Button>
+                                    <Button bg={'transparent'}>
+                                        <CgPlayListAdd size={'1.5rem'}/> Add to playlist
+                                    </Button>
                                 </Box>
                             </Box>
                             <Box display={'flex'} flexWrap={'wrap'} >

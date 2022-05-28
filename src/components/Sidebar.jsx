@@ -14,8 +14,6 @@ const Sidebar = () => {
             left="2"
             h="100vh"
             top={"0"}
-            boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.45)"
-            borderRadius={navSize === "small" ? "15px" : "30px"}
             w={navSize === "small" ? "80px" : "200px"}
             flexDir="column"
             justifyContent="space-between"
@@ -28,7 +26,7 @@ const Sidebar = () => {
             >
                 
                 <IconButton 
-                    background="none"
+                    bg="none"
                     _hover={{ background: 'none' }}
                     icon={<FiMenu />}
                     onClick={() => {
@@ -49,7 +47,6 @@ const Sidebar = () => {
             <Flex
                 p="2%"
                 flexDir="column"
-                w="100%"
                 alignItems={navSize === "small" ? "center" : "flex-start"}
                 mb={4}
             >

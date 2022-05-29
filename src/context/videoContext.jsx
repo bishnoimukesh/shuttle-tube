@@ -8,9 +8,11 @@ const VideoProvider = ({ children }) => {
     const [videoData,setVideoData] = useState([])
     const [VideoState, VideoDispatch] = useReducer(VideoReducer, {
         search: "",
+        LikedVideos: []
     });
 
     useEffect(() => {
+        console.log("useeffect running");
         (async () => {
             const data = await getVideosDataFromServer();
             setVideoData(data);

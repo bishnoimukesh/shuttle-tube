@@ -5,6 +5,7 @@ import {FaHistory} from 'react-icons/fa'
 import {MdExplore, MdPlaylistAdd, MdWatchLater} from 'react-icons/md'
 import {AiFillLike} from 'react-icons/ai'
 import {NavItem} from '../components/NavItem'
+// import {Link}  from 'react-router-dom'
 
 const Sidebar = () => {
     const [navSize, changeNavSize] = useState("large")
@@ -36,12 +37,12 @@ const Sidebar = () => {
                             changeNavSize("small")
                     }}
                 />
-                <NavItem navSize={navSize} icon={FiHome} title="Home" />
-                <NavItem navSize={navSize} icon={MdExplore} title="Explore" mt={0}/>
-                <NavItem navSize={navSize} icon={MdPlaylistAdd} title="PlayList" mt={0}/>
-                <NavItem navSize={navSize} icon={AiFillLike} title="Liked" mt={0}/>
-                <NavItem navSize={navSize} icon={MdWatchLater} title="Watch Later" mt={0}/>
-                <NavItem navSize={navSize} icon={FaHistory} title="History" mt={0}/>
+                <NavItem to='/' navSize={navSize} icon={FiHome} title="Home" />
+                <NavItem to='/home' navSize={navSize} icon={MdExplore} title="Explore" mt={0}/>
+                <NavItem to='home' navSize={navSize} icon={MdPlaylistAdd} title="PlayList" mt={0}/>
+                <NavItem to='/likedvideo' navSize={navSize} icon={AiFillLike} title="Liked" mt={0} />
+                <NavItem to='/home' navSize={navSize} icon={MdWatchLater} title="Watch Later" mt={0}/>
+                <NavItem to='/home' navSize={navSize} icon={FaHistory} title="History" mt={0}/>
             </Flex>
 
             <Flex

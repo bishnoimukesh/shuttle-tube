@@ -1,6 +1,7 @@
 import {Flex, Text, Icon, Link, Menu, MenuButton} from '@chakra-ui/react'
+import {Link as RouterLink} from 'react-router-dom'
 
-const NavItem = ({ icon, title, active, navSize }) => {
+const NavItem = ({ icon, title, active, navSize, to }) => {
     return (
         <Flex
             flexDir="column"
@@ -8,7 +9,7 @@ const NavItem = ({ icon, title, active, navSize }) => {
             alignItems={navSize === "small" ? "center" : "flex-start"}
         >
             <Menu placement="right">
-                <Link
+                <Link as={RouterLink} to={to}
                     backgroundColor={active && "#AEC8CA"}
                     p={3}
                     borderRadius={8}
@@ -17,7 +18,7 @@ const NavItem = ({ icon, title, active, navSize }) => {
                 >
                     <MenuButton w="100%">
                         <Flex alignItems={'center'}>
-                            <Icon as={icon} fontSize="xl" color={active ? "#82AAAD" : "gray.500"} />
+                            <Icon as={icon} fontSize="xl" color={active ? "red" : "gray.500"} />
                             <Text ml={5} fontSize="md" display={navSize === "small" ? "none" : "flex"}>{title}</Text>
                         </Flex>
                     </MenuButton>

@@ -18,7 +18,7 @@ const Home = () => {
                 </GridItem>
                 <GridItem colSpan={4} >
                     <Box display="flex" alignItems={"center"} flexWrap={'wrap'} >
-                    {filteredData.map(video => (
+                    {filteredData?.map(video => (
                         <Card cardData={video} key={video.id} />
                     ))}
                     </Box>

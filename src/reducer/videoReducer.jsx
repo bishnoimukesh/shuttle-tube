@@ -5,6 +5,11 @@ const VideoReducer = (state, {type, payload}) => {
                 ...state,
                 search: payload
             }
+            case "ADD_LIKEDVIDEO":
+            return{
+                ...state,
+                LikedVideos: payload
+            }
             default:
                 return state;
             }

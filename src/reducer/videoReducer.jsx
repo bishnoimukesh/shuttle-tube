@@ -10,6 +10,11 @@ const VideoReducer = (state, {type, payload}) => {
                 ...state,
                 LikedVideos: payload
             }
+            case "ADD_WATCH_LATER":
+                return{
+                    ...state,
+                    watchLaterList: payload
+                }
             default:
                 return state;
             }

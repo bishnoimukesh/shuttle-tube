@@ -41,7 +41,7 @@ const Sidebar = () => {
                 <NavItem to='/home' navSize={navSize} icon={MdExplore} title="Explore" mt={0}/>
                 <NavItem to='home' navSize={navSize} icon={MdPlaylistAdd} title="PlayList" mt={0}/>
                 <NavItem to='/likedvideo' navSize={navSize} icon={AiFillLike} title="Liked" mt={0} />
-                <NavItem to='/home' navSize={navSize} icon={MdWatchLater} title="Watch Later" mt={0}/>
+                <NavItem to='/watchlatervideo' navSize={navSize} icon={MdWatchLater} title="Watch Later" mt={0}/>
                 <NavItem to='/home' navSize={navSize} icon={FaHistory} title="History" mt={0}/>
             </Flex>
 

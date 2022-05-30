@@ -1,21 +1,20 @@
 import { useParams } from 'react-router-dom';
-import {VideoPlayer} from "../components"
+import {VideoPlayer, Navbar, Sidebar} from "../components"
 import {useVideo} from "../context/videoContext"
 import {Grid, GridItem, Box, Heading, Text, Button} from "@chakra-ui/react"
-import { Navbar, Sidebar} from '../components';
 import {BiLike} from "react-icons/bi"
 import {AiFillLike} from "react-icons/ai"
 import {BsStopwatch} from "react-icons/bs"
-// import {BsStopwatchFill} from "react-icons/bs"
+import {BsStopwatchFill} from "react-icons/bs"
 import {CgPlayListAdd} from "react-icons/cg"
-import { isVideoInLiked } from '../utilities/videosFunction';
-import {addVideoInLiked, removeVideoFromLiked} from '../utilities/httpsHelper';
+import { isVideoInLiked, isVideoInWatchLater } from '../utilities/videosFunction';
+import {addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, removeVideoFromWatchLater} from '../utilities/httpsHelper';
 import {useAuthContext} from '../context/authContext'
 import { useNavigate } from 'react-router-dom';
 
 const SingleVideo = () => {
     const navigate = useNavigate();
-    const { videoData,  VideoDispatch, VideoState: {LikedVideos} } = useVideo();
+    const { videoData,  VideoDispatch, VideoState: {LikedVideos, watchLaterList} } = useVideo();
     const { videoId } = useParams();
     const {authState: {token, isLogin}} = useAuthContext();
     const video = videoData?.find(({ _id }) => _id === videoId);
@@ -33,6 +32,19 @@ const SingleVideo = () => {
             navigate('/login');
         }
     }
+
+    const watchLaterHandler =()=>{
+        if (isLogin) {
+            if (isVideoInWatchLater(video._id, watchLaterList)) {
+            removeVideoFromWatchLater(video._id, VideoDispatch, token);
+            } else {
+            addVideoInWatchLater(video, VideoDispatch, token);
+            }
+        } else {
+            navigate("/login");
+        }
+    
+    };
 
     return (
         <Grid h='200px' templateRows='repeat(2, 1fr)'
@@ -59,9 +71,13 @@ const SingleVideo = () => {
                                             <BiLike size={'1.2rem'}/> Like
                                         </Button>)
                                     }
-                                    <Button bg={'transparent'}>
+                                    {isVideoInWatchLater(video._id, watchLaterList) ? 
+                                    (<Button bg={'transparent'} onClick={watchLaterHandler}>
+                                        <BsStopwatchFill size={'1rem'}/> Remove from Watch Later
+                                    </Button>):
+                                    (<Button bg={'transparent'} onClick={watchLaterHandler}>
                                         <BsStopwatch size={'1rem'}/> Watch Later
-                                    </Button>
+                                    </Button>)}
                                     <Button bg={'transparent'}>
                                         <CgPlayListAdd size={'1.5rem'}/> Add to playlist
                                     </Button>

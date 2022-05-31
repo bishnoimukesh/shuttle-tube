@@ -15,6 +15,21 @@ const VideoReducer = (state, {type, payload}) => {
                     ...state,
                     watchLaterList: payload
                 }
+            case "ADD_HISTORY":
+                return{
+                    ...state,
+                    history: payload
+                }
+            case "REMOVE_VIDEO_FROM_HISTORY":
+                return{
+                    ...state,
+                    history: payload
+                }
+            case "CLEAR_HISTORY":
+                return{
+                    ...state,
+                    history: payload
+                }
             default:
                 return state;
             }

@@ -10,12 +10,10 @@ const getVideosDataFromServer = async () => {
 }
 
 const addVideoInLiked = async (video, VideoDispatch, token) => {
-    console.log(video)
     try {
         const {data} = await axios.post("/api/user/likes",{video}, {
             headers: {authorization:  token}
         },)
-        console.log(data)
         VideoDispatch({
             type: "ADD_LIKEDVIDEO",
             payload: data.likes
@@ -70,4 +68,50 @@ const removeVideoFromWatchLater = async (videoId, VideoDispatch, token) => {
     }
 }
 
-export { getVideosDataFromServer, addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, removeVideoFromWatchLater };
+const addVideoInHistory = async (video, VideoDispatch, token) => {
+    console.log("history")
+    try {
+        const {data} = await axios.post("/api/user/history",{video}, {
+            headers: {authorization:  token}
+        },)
+        console.log({data})
+        VideoDispatch({
+            type: "ADD_HISTORY",
+            payload: data.history
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const removeVideoFromHistory = async (videoId, VideoDispatch, token) => {
+    try {
+        const {data} = await axios.delete(`/api/user/history/${videoId}`, {
+            headers: {authorization:  token}
+        })
+        VideoDispatch({
+            type: "REMOVE_VIDEO_FROM_HISTORY",
+            payload: data.history
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const removeAllVideoFromHistory = async (VideoDispatch, token) => {
+    try {
+        const {data} = await axios.delete(`/api/user/history/all`, {
+            headers: {authorization:  token}
+        })
+        VideoDispatch({
+            type: "CLEAR_HISTORY",
+            payload: data.history
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+export { getVideosDataFromServer, addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, 
+    removeVideoFromWatchLater, addVideoInHistory, removeVideoFromHistory, removeAllVideoFromHistory };

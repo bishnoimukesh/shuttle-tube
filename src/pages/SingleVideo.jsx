@@ -1,7 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import {VideoPlayer, Navbar, Sidebar} from "../components"
 import {useVideo} from "../context/videoContext"
-import {Grid, GridItem, Box, Heading, Text, Button} from "@chakra-ui/react"
+import {Grid, GridItem, Box, Heading, Text, Button, Modal, ModalOverlay, 
+    ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, 
+    useDisclosure} from "@chakra-ui/react"
 import {BiLike} from "react-icons/bi"
 import {AiFillLike} from "react-icons/ai"
 import {BsStopwatch} from "react-icons/bs"
@@ -9,8 +11,7 @@ import {BsStopwatchFill} from "react-icons/bs"
 import {CgPlayListAdd} from "react-icons/cg"
 import { isVideoInLiked, isVideoInWatchLater } from '../utilities/videosFunction';
 import {addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, removeVideoFromWatchLater} from '../utilities/httpsHelper';
-import {useAuthContext} from '../context/authContext'
-import { useNavigate } from 'react-router-dom';
+import {useAuthContext} from '../context/authContext';
 
 const SingleVideo = () => {
     const navigate = useNavigate();
@@ -19,6 +20,7 @@ const SingleVideo = () => {
     const {authState: {token, isLogin}} = useAuthContext();
     const video = videoData?.find(({ _id }) => _id === videoId);
     const {title, description, views, creator} = video??{};
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     const likeHandler = () => {
         if (isLogin) {
@@ -78,9 +80,25 @@ const SingleVideo = () => {
                                     (<Button bg={'transparent'} onClick={watchLaterHandler}>
                                         <BsStopwatch size={'1rem'}/> Watch Later
                                     </Button>)}
-                                    <Button bg={'transparent'}>
-                                        <CgPlayListAdd size={'1.5rem'}/> Add to playlist
+                                    <Button onClick={onOpen} bg={'transparent'}>
+                                        <CgPlayListAdd size={'1.5rem'} />Add to Playlist
                                     </Button>
+                                    <Modal isOpen={isOpen} onClose={onClose}>
+                                        <ModalOverlay />
+                                        <ModalContent>
+                                        <ModalHeader>Modal Title</ModalHeader>
+                                        <ModalCloseButton />
+                                        <ModalBody>
+                                            <Text count={2} />
+                                        </ModalBody>
+                                        <ModalFooter>
+                                            <Button colorScheme='blue' mr={3} onClick={onClose}>
+                                            Close
+                                            </Button>
+                                            <Button variant='ghost'>Secondary Action</Button>
+                                        </ModalFooter>
+                                        </ModalContent>
+                                    </Modal>
                                 </Box>
                             </Box>
                             <Box display={'flex'} flexWrap={'wrap'} >

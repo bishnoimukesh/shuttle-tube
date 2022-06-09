@@ -10,7 +10,8 @@ import {BsStopwatch} from "react-icons/bs"
 import {BsStopwatchFill} from "react-icons/bs"
 import {CgPlayListAdd} from "react-icons/cg"
 import { isVideoInLiked, isVideoInWatchLater, isVideoInPlaylist } from '../utilities/videosFunction';
-import {addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, removeVideoFromWatchLater, createPlaylist, addVideoToPlaylist} from '../utilities/httpsHelper';
+import {addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, removeVideoFromWatchLater, createPlaylist, 
+    addVideoToPlaylist, removeVideoFromPlaylist} from '../utilities/httpsHelper';
 import {useAuthContext} from '../context/authContext';
 import { useState } from 'react';
 
@@ -59,9 +60,13 @@ const SingleVideo = () => {
     }
 
     const removeVideoFromPlaylistHandler=()=>{
-
+        if (isLogin) {
+            removeVideoFromPlaylist(video._id, VideoDispatch, token);
+        }
+        else {
+            navigate('/login')
+        }
     }
-    console.log('playlists', playlists)
 
     return (
         <Grid h='200px' templateRows='repeat(2, 1fr)'
@@ -110,8 +115,8 @@ const SingleVideo = () => {
                                                 <Checkbox
                                                 checked = {()=>isVideoInPlaylist(playlists, playlist._id, videoId)?? false}
                                                 onChange={()=>isVideoInPlaylist(playlists, playlist._id, videoId) ? 
-                                                removeVideoFromPlaylistHandler(playlist._id,videoId): addVideoToPlaylist(video, playlist._id, VideoDispatch, token) }
-                                                >
+                                                removeVideoFromPlaylistHandler(video._id, playlist._id, VideoDispatch, token)
+                                                : addVideoToPlaylist(video, playlist._id, VideoDispatch, token) }>
                                                 {playlist.title}
                                                 </Checkbox>
                                             </List>

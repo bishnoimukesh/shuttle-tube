@@ -108,7 +108,7 @@ const removePlaylist = async (playlistId, VideoDispatch, token) => {
         })
         console.log(data)
         VideoDispatch({
-            type: "REMOVE_PLAYLIST",
+            type: "DELETE_PLAYLIST",
             payload: data.playlists
         })
     } catch (error) {

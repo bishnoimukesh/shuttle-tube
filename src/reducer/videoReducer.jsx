@@ -26,7 +26,6 @@ const VideoReducer = (state, {type, payload}) => {
                     playlists: payload
                 }
             case "ADD_VIDEO_TO_PLAYLIST":
-                console.log("payload", payload)
                 return{
                     ...state,
                     playlists: payload

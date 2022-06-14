@@ -30,6 +30,12 @@ const VideoReducer = (state, {type, payload}) => {
                     ...state,
                     playlists: payload
                 }
+            case "REMOVE_VIDEO_FROM_PLAYLIST":
+                console.log(payload)
+                return{
+                    ...state,
+                    playlists: payload
+                }
             default:
                 return state;
             }

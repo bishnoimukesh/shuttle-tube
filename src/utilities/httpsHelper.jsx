@@ -40,8 +40,6 @@ const removeVideoFromLiked = async (videoId, VideoDispatch, token) => {
 }
 
 const addVideoInWatchLater = async (video, VideoDispatch, token) => {
-    console.log("useeffect running");
-
     try {
         const {data} = await axios.post("/api/user/watchlater",{video}, {
             headers: {authorization:  token}
@@ -56,7 +54,6 @@ const addVideoInWatchLater = async (video, VideoDispatch, token) => {
 }
 
 const removeVideoFromWatchLater = async (videoId, VideoDispatch, token) => {
-    console.log("removed")
     try {
         const {data} = await axios.delete(`/api/user/watchlater/${videoId}`, {
             headers: {authorization:  token}
@@ -106,7 +103,6 @@ const removePlaylist = async (playlistId, VideoDispatch, token) => {
         const {data} = await axios.delete(`/api/user/playlists/${playlistId}`, {
             headers: {authorization:  token}
         })
-        console.log(data)
         VideoDispatch({
             type: "DELETE_PLAYLIST",
             payload: data.playlists
@@ -116,14 +112,14 @@ const removePlaylist = async (playlistId, VideoDispatch, token) => {
     }
 }
 
-const removeVideoFromPlaylist = async (videoId, VideoDispatch, encodedToken, playlistId) => {
+const removeVideoFromPlaylist = async (videoId, VideoDispatch, token, playlistId) => {
     try {
-        await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`, {
-            headers: { authorization: encodedToken }
+        const {data} = await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`, {
+            headers: { authorization: token }
         })
         VideoDispatch({ 
             type: "REMOVE_VIDEO_FROM_PLAYLIST", 
-            payload: { videoId, playlistId } 
+            payload: data.playlists ,
         })
     } catch (error) {
         console.log(error)

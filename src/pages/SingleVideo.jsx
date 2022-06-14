@@ -85,7 +85,7 @@ const SingleVideo = () => {
                         <Box display={'flex'} flexWrap={'wrap'} justifyContent={'space-between'} mt={'2'} mb={'2'}>
                             <Text display={'flex'} alignItems={'center'} fontSize={'sm'}>{views} views</Text>
                             <Box ml={'2'}>
-                                {isVideoInLiked(video._id, LikedVideos) ? (
+                                {isVideoInLiked(video?._id, LikedVideos) ? (
                                     <Button bg={'transparent'} onClick={likeHandler}>
                                         <AiFillLike size={'1.2rem'}/> Unlike
                                     </Button>):(
@@ -93,7 +93,7 @@ const SingleVideo = () => {
                                         <BiLike size={'1.2rem'}/> Like
                                     </Button>)
                                 }
-                                {isVideoInWatchLater(video._id, watchLaterList) ? 
+                                {isVideoInWatchLater(video?._id, watchLaterList) ? 
                                 (<Button bg={'transparent'} onClick={watchLaterHandler}>
                                     <BsStopwatchFill size={'1rem'}/> Remove from Watch Later
                                 </Button>):

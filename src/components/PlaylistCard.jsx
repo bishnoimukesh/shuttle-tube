@@ -13,14 +13,12 @@ const PlaylistCard = ({ playlistCardData }) => {
     const {VideoDispatch} = useVideo();
 
     const removePlaylistHandler = playlistId => {
-        console.log('delete', playlistId);
         if (isLogin) {
         removePlaylist(playlistId, VideoDispatch, token);
         } else {
         navigate('/login');
         }
     };
-    console.log(playlistCardData);
 
     return (
         <Box p={4} display={'flex'}>

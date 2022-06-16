@@ -10,8 +10,10 @@ const VideoProvider = ({ children }) => {
         search: "",
         LikedVideos: [],
         watchLaterList: [],
-        playlists : []
+        playlists : [],
+        history: [],
     });
+    console.log(VideoState);
 
     useEffect(() => {
         console.log("useeffect running");

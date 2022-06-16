@@ -121,7 +121,11 @@ export const addVideoToPlaylistHandler = function (schema, request) {
       );
     }
     playlist.videos.push(video);
+<<<<<<< HEAD
     return new Response(201, {}, { playlists: user.playlists});
+=======
+    return new Response(201, {}, { playlists: user.playlists });
+>>>>>>> 2321ae4a83e909b958c6d9afe5d5f10df1bc7928
   }
   return new Response(
     404,
@@ -145,7 +149,12 @@ export const removeVideoFromPlaylistHandler = function (schema, request) {
       (item) => item._id !== videoId
     );
     playlist.videos = filteredVideos;
+<<<<<<< HEAD
     return new Response(200, {}, { playlists: user.playlists});
+=======
+    // return new Response(200, {}, { playlist });
+    return new Response(200, {}, { playlists: user.playlists });
+>>>>>>> 2321ae4a83e909b958c6d9afe5d5f10df1bc7928
   }
   return new Response(
     404,

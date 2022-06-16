@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useParams, useNavigate } from 'react-router-dom';
+=======
+import { useEffect } from 'react';
+>>>>>>> 2321ae4a83e909b958c6d9afe5d5f10df1bc7928
 import {VideoPlayer, Navbar, Sidebar} from "../components"
 import {useVideo} from "../context/videoContext"
 import {Grid, GridItem, Box, Heading, Text, Button, Modal, ModalOverlay, 
@@ -9,11 +13,19 @@ import {AiFillLike} from "react-icons/ai"
 import {BsStopwatch} from "react-icons/bs"
 import {BsStopwatchFill} from "react-icons/bs"
 import {CgPlayListAdd} from "react-icons/cg"
+<<<<<<< HEAD
 import { isVideoInLiked, isVideoInWatchLater, isVideoInPlaylist } from '../utilities/videosFunction';
 import {addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, removeVideoFromWatchLater, createPlaylist, 
     addVideoToPlaylist, removeVideoFromPlaylist} from '../utilities/httpsHelper';
 import {useAuthContext} from '../context/authContext';
 import { useState } from 'react';
+=======
+import { isVideoInLiked, isVideoInWatchLater } from '../utilities/videosFunction';
+import {addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, removeVideoFromWatchLater,addVideoInHistory} from '../utilities/httpsHelper';
+import {useAuthContext} from '../context/authContext'
+import { useNavigate, useParams } from 'react-router-dom';
+// import { isVideoInHistory } from '../utilities/videosFunction';
+>>>>>>> 2321ae4a83e909b958c6d9afe5d5f10df1bc7928
 
 const SingleVideo = () => {
     const navigate = useNavigate();
@@ -50,6 +62,7 @@ const SingleVideo = () => {
         }
     };
 
+<<<<<<< HEAD
     const createPlaylistHandler = () =>{
         if (isLogin) {
             createPlaylist(playlistTitle, VideoDispatch, token);
@@ -67,6 +80,13 @@ const SingleVideo = () => {
             navigate('/login')
         }
     }
+=======
+    useEffect(() => {
+        (async () => {
+            addVideoInHistory(video, VideoDispatch, token)
+        })()
+    }, [video, VideoDispatch, token]);
+>>>>>>> 2321ae4a83e909b958c6d9afe5d5f10df1bc7928
 
     return (
         <Grid h='200px' templateRows='repeat(2, 1fr)'

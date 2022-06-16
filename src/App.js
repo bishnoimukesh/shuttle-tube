@@ -2,7 +2,7 @@ import React from 'react';
 import {ChakraProvider,Box, theme} from '@chakra-ui/react';
 import { Routes, Route } from "react-router-dom";
 import MockMan from "mockman-js";
-import {Home, Login, SignUp, SingleVideo, LikePage, WatchLater, Playlist, PlaylistItem} from "./pages"
+import {Home, Login, SignUp, SingleVideo, LikePage, WatchLater, History, Playlist, PlaylistItem} from "./pages"
 import './App.css'
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
           <Route path="/watchlatervideo" element={<WatchLater  />} />
           <Route path="/playlist" element={<Playlist />} />
           <Route path="/playlist/:playlistId" element={<PlaylistItem />} />
+          <Route path="/history" element={<History  />} />
           <Route path="/mock" element={<MockMan  />} />
         </Routes>
       </Box>

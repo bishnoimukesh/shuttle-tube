@@ -10,12 +10,10 @@ const getVideosDataFromServer = async () => {
 }
 
 const addVideoInLiked = async (video, VideoDispatch, token) => {
-    console.log(video)
     try {
         const {data} = await axios.post("/api/user/likes",{video}, {
             headers: {authorization:  token}
         },)
-        console.log(data)
         VideoDispatch({
             type: "ADD_LIKEDVIDEO",
             payload: data.likes
@@ -93,6 +91,36 @@ const addVideoToPlaylist = async (video,playlistId, VideoDispatch, token) => {
             type: "ADD_VIDEO_TO_PLAYLIST",
             payload: data.playlists
         })
+    }catch (error) {
+        console.log(error);
+    }
+}
+
+const addVideoInHistory = async (video, VideoDispatch, token) => {
+    console.log("history")
+    try {
+        const {data} = await axios.post("/api/user/history",{video}, {
+            headers: {authorization:  token}
+        },)
+        console.log({data})
+        VideoDispatch({
+            type: "ADD_HISTORY",
+            payload: data.history
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const removeVideoFromHistory = async (videoId, VideoDispatch, token) => {
+    try {
+        const {data} = await axios.delete(`/api/user/history/${videoId}`, {
+            headers: {authorization:  token}
+        })
+        VideoDispatch({
+            type: "REMOVE_VIDEO_FROM_HISTORY",
+            payload: data.history
+        })
     } catch (error) {
         console.log(error)
     }
@@ -106,6 +134,20 @@ const removePlaylist = async (playlistId, VideoDispatch, token) => {
         VideoDispatch({
             type: "DELETE_PLAYLIST",
             payload: data.playlists
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const removeAllVideoFromHistory = async (VideoDispatch, token) => {
+    try {
+        const {data} = await axios.delete(`/api/user/history/all`, {
+            headers: {authorization:  token}
+        })
+        VideoDispatch({
+            type: "CLEAR_HISTORY",
+            payload: data.history
         })
     } catch (error) {
         console.log(error)
@@ -127,4 +169,5 @@ const removeVideoFromPlaylist = async (videoId, VideoDispatch, token, playlistId
 }
 
 export { getVideosDataFromServer, addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, 
-        removeVideoFromWatchLater, createPlaylist, addVideoToPlaylist, removePlaylist, removeVideoFromPlaylist };
+        removeVideoFromWatchLater, createPlaylist, addVideoToPlaylist, removePlaylist, removeVideoFromPlaylist,
+        addVideoInHistory, removeVideoFromHistory, removeAllVideoFromHistory };

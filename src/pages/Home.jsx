@@ -1,31 +1,30 @@
-import { Grid, GridItem, Box } from '@chakra-ui/react'
-import {Navbar, Sidebar, Card} from '../components/index'
-import {useVideo} from '../context/videoContext'
-import {Filter} from '../utilities/Filter'
+import { Box, Image, Button, Text  } from '@chakra-ui/react'
+import { Navbar } from '../components'
+import { Link } from 'react-router-dom'
+import badminton from '../asset/badminton.png'
 
 const Home = () => {
-    const {videoData, VideoState:{search}} = useVideo();
-    const filteredData = Filter(videoData, search);
     return (
-        <>
-            <Grid h='200px' templateRows='repeat(2, 1fr)'
-            templateColumns='repeat(5, 1fr)' gap={2}>
-                <GridItem rowSpan={2} colSpan={1}>
-                    <Sidebar/>
-                </GridItem>
-                <GridItem colSpan={4} >
-                        <Navbar/>
-                </GridItem>
-                <GridItem colSpan={4} >
-                    <Box display="flex" alignItems={"center"} flexWrap={'wrap'} >
-                    {filteredData?.map(video => (
-                        <Card cardData={video} key={video.id} />
-                    ))}
-                    </Box>
-                </GridItem>
-            </Grid>
-        </>
+        <Box>
+            <Navbar/>
+            <Box display={'flex'} justifyContent={'center'} >
+                <Box display={'flex'} justifyContent={'center'} flexWrap={'wrap'} alignItems={'center'}>
+                    <Image src={badminton} alt='homepage wallpaper'/>
+                    <Text fontSize={'1.3rem'} top={'25%'} w={'60%'} fontWeight='500'>
+                        Online Badminton Video Library. Discover a unique way of receiving badminton coaching, 
+                        with information and playing analysis available to you wherever you looking for.
+                    </Text>
+                </Box>
+            </Box>
+            <Box display={'flex'} justifyContent={'center'} mt={'2rem'}>
+                <Button size='lg' borderRadius={'10'} p={'4'} alignItems={'center'} justifyContent={'center'}>
+                    <Link to='/explore'>
+                        Explore More →
+                    </Link>
+                </Button>
+            </Box>
+        </Box>
     )
 }
 
-export  {Home}
+export {Home}

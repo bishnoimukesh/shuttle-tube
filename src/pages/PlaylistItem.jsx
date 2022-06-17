@@ -15,10 +15,7 @@ const PlaylistItem = () => {
     const data = currentPlaylist?.videos;
     const removeVideoFromPlaylistHandler = (videoId) => {
         removeVideoFromPlaylist(videoId, VideoDispatch, token, playlistId)
-        console.log("removed", currentPlaylist._id, token)
     }
-    console.log(currentPlaylist)
-    console.log(currentPlaylist?.videos.map(video => video))
     
     return (
         <Grid h='200px' templateRows='repeat(2, 1fr)'

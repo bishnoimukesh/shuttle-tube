@@ -9,7 +9,7 @@ import {BiLike} from "react-icons/bi"
 import {AiFillLike} from "react-icons/ai"
 import {BsStopwatch, BsStopwatchFill} from "react-icons/bs"
 import {CgPlayListAdd} from "react-icons/cg"
-import { isVideoInLiked, isVideoInWatchLater, isVideoInHistory, isVideoInPlaylist } from '../utilities/videosFunction';
+import { isVideoInLiked, isVideoInWatchLater, isVideoInPlaylist } from '../utilities/videosFunction';
 import {addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, removeVideoFromWatchLater, addVideoInHistory, createPlaylist, 
     addVideoToPlaylist, removeVideoFromPlaylist} from '../utilities/httpsHelper';
 import {useAuthContext} from '../context/authContext';

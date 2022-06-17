@@ -15,7 +15,6 @@ const VideoReducer = (state, {type, payload}) => {
                     ...state,
                     watchLaterList: payload
                 }
-<<<<<<< HEAD
             case "CREATE_PLAYLIST":
                 return{
                     ...state,
@@ -36,7 +35,7 @@ const VideoReducer = (state, {type, payload}) => {
                 return{
                     ...state,
                     playlists: payload
-=======
+                }
             case "ADD_HISTORY":
                 return{
                     ...state,
@@ -51,7 +50,6 @@ const VideoReducer = (state, {type, payload}) => {
                 return{
                     ...state,
                     history: payload
->>>>>>> 2321ae4a83e909b958c6d9afe5d5f10df1bc7928
                 }
             default:
                 return state;

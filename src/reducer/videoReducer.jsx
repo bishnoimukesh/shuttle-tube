@@ -15,6 +15,22 @@ const VideoReducer = (state, {type, payload}) => {
                     ...state,
                     watchLaterList: payload
                 }
+            case "CREATE_PLAYLIST":
+                return{
+                    ...state,
+                    playlists : payload
+                }
+            case "DELETE_PLAYLIST":
+                return{
+                    ...state,
+                    playlists: payload
+                }
+            case "ADD_VIDEO_TO_PLAYLIST":
+                console.log("payload", payload)
+                return{
+                    ...state,
+                    playlists: payload
+                }
             default:
                 return state;
             }

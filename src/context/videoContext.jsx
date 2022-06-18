@@ -9,7 +9,8 @@ const VideoProvider = ({ children }) => {
     const [VideoState, VideoDispatch] = useReducer(VideoReducer, {
         search: "",
         LikedVideos: [],
-        watchLaterList: []
+        watchLaterList: [],
+        playlists : []
     });
 
     useEffect(() => {

@@ -77,6 +77,7 @@ const createPlaylist = async (playlistTitle, VideoDispatch, token) => {
                 authorization:  token
             }
         },)
+        console.log(data)
         VideoDispatch({
             type: "CREATE_PLAYLIST",
             payload: data.playlists
@@ -88,12 +89,12 @@ const createPlaylist = async (playlistTitle, VideoDispatch, token) => {
 
 const addVideoToPlaylist = async (video,playlistId, VideoDispatch, token) => {
     try {
-        await axios.post(`/api/user/playlists/${playlistId}`,{video}, {
+        const {data} = await axios.post(`/api/user/playlists/${playlistId}`,{video}, {
             headers: {authorization:  token}
         },)
         VideoDispatch({
             type: "ADD_VIDEO_TO_PLAYLIST",
-            payload: {video, playlistId}
+            payload: data.playlists
         })
     } catch (error) {
         console.log(error)
@@ -105,6 +106,7 @@ const removePlaylist = async (playlistId, VideoDispatch, token) => {
         const {data} = await axios.delete(`/api/user/playlists/${playlistId}`, {
             headers: {authorization:  token}
         })
+        console.log(data)
         VideoDispatch({
             type: "REMOVE_PLAYLIST",
             payload: data.playlists

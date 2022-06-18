@@ -93,8 +93,8 @@ const Login = () => {
                 my={"4"}
                 onClick={(e) =>
                     submitFormHandler(e,
-                    'adarshbalika@gmail.com',
-                    'adarshBalika123',
+                    'test@gmail.com',
+                    'testdata',
                     )
                 }
                 w={"100%"}

@@ -1,14 +1,10 @@
-import {Grid, GridItem, Box, Button} from "@chakra-ui/react"
+import {Grid, GridItem, Box} from "@chakra-ui/react"
 import { Navbar, Sidebar } from "../components";
-import { useAuthContext } from "../context/authContext";
 import { useVideo } from "../context/videoContext";
-import { useNavigate } from 'react-router-dom';
 import {PlaylistCard} from '../components/PlaylistCard'
 
 const Playlist = () => {
-    const {VideoState: { playlists }, VideoDispatch} = useVideo();
-    const {authState:{token, isLogin}} = useAuthContext();
-    const navigate = useNavigate();
+    const {VideoState: { playlists }} = useVideo();
 
     return (
         <Grid h='200px' templateRows='repeat(2, 1fr)'
@@ -24,9 +20,6 @@ const Playlist = () => {
                     {playlists.map((playlist) => (
                         <Box position={'relative'}>
                             <PlaylistCard playlistCardData={playlist} key={playlist._id}/>
-                            {/* <Button position={'absolute'} top={'6'} left={'6'} onClick={()=>removePlaylistHandler(playlist._id)}>
-                                <DeleteIcon w={6} h={6}/>
-                            </Button> */}
                         </Box> 
                     ))}
                 </Box>

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import {VideoPlayer, Navbar, Sidebar} from "../components"
 import {useVideo} from "../context/videoContext"
 import {Grid, GridItem, Box, Heading, Text, Button} from "@chakra-ui/react"
@@ -8,9 +8,10 @@ import {BsStopwatch} from "react-icons/bs"
 import {BsStopwatchFill} from "react-icons/bs"
 import {CgPlayListAdd} from "react-icons/cg"
 import { isVideoInLiked, isVideoInWatchLater } from '../utilities/videosFunction';
-import {addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, removeVideoFromWatchLater} from '../utilities/httpsHelper';
+import {addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, removeVideoFromWatchLater,addVideoInHistory} from '../utilities/httpsHelper';
 import {useAuthContext} from '../context/authContext'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+// import { isVideoInHistory } from '../utilities/videosFunction';
 
 const SingleVideo = () => {
     const navigate = useNavigate();
@@ -43,8 +44,13 @@ const SingleVideo = () => {
         } else {
             navigate("/login");
         }
-    
     };
+
+    useEffect(() => {
+        (async () => {
+            addVideoInHistory(video, VideoDispatch, token)
+        })()
+    }, [video, VideoDispatch, token]);
 
     return (
         <Grid h='200px' templateRows='repeat(2, 1fr)'

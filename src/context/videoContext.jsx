@@ -10,6 +10,7 @@ const VideoProvider = ({ children }) => {
         search: "",
         LikedVideos: [],
         watchLaterList: [],
+        playlists : [],
         history: [],
     });
     console.log(VideoState);

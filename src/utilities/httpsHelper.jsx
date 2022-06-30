@@ -38,8 +38,6 @@ const removeVideoFromLiked = async (videoId, VideoDispatch, token) => {
 }
 
 const addVideoInWatchLater = async (video, VideoDispatch, token) => {
-    console.log("useeffect running");
-
     try {
         const {data} = await axios.post("/api/user/watchlater",{video}, {
             headers: {authorization:  token}
@@ -54,7 +52,6 @@ const addVideoInWatchLater = async (video, VideoDispatch, token) => {
 }
 
 const removeVideoFromWatchLater = async (videoId, VideoDispatch, token) => {
-    console.log("removed")
     try {
         const {data} = await axios.delete(`/api/user/watchlater/${videoId}`, {
             headers: {authorization:  token}
@@ -65,6 +62,37 @@ const removeVideoFromWatchLater = async (videoId, VideoDispatch, token) => {
         })
     } catch (error) {
         console.log(error)
+    }
+}
+
+const createPlaylist = async (playlistTitle, VideoDispatch, token) => {
+    try {
+        const {data} = await axios.post("/api/user/playlists",{playlist:{title:playlistTitle}}, {
+            headers: {
+                authorization:  token
+            }
+        },)
+        console.log(data)
+        VideoDispatch({
+            type: "CREATE_PLAYLIST",
+            payload: data.playlists
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const addVideoToPlaylist = async (video,playlistId, VideoDispatch, token) => {
+    try {
+        const {data} = await axios.post(`/api/user/playlists/${playlistId}`,{video}, {
+            headers: {authorization:  token}
+        },)
+        VideoDispatch({
+            type: "ADD_VIDEO_TO_PLAYLIST",
+            payload: data.playlists
+        })
+    }catch (error) {
+        console.log(error);
     }
 }
 
@@ -98,6 +126,20 @@ const removeVideoFromHistory = async (videoId, VideoDispatch, token) => {
     }
 }
 
+const removePlaylist = async (playlistId, VideoDispatch, token) => {
+    try {
+        const {data} = await axios.delete(`/api/user/playlists/${playlistId}`, {
+            headers: {authorization:  token}
+        })
+        VideoDispatch({
+            type: "DELETE_PLAYLIST",
+            payload: data.playlists
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const removeAllVideoFromHistory = async (VideoDispatch, token) => {
     try {
         const {data} = await axios.delete(`/api/user/history/all`, {
@@ -112,6 +154,20 @@ const removeAllVideoFromHistory = async (VideoDispatch, token) => {
     }
 }
 
+const removeVideoFromPlaylist = async (videoId, VideoDispatch, token, playlistId) => {
+    try {
+        const {data} = await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`, {
+            headers: { authorization: token }
+        })
+        VideoDispatch({ 
+            type: "REMOVE_VIDEO_FROM_PLAYLIST", 
+            payload: data.playlists ,
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 export { getVideosDataFromServer, addVideoInLiked, removeVideoFromLiked, addVideoInWatchLater, 
-    removeVideoFromWatchLater, addVideoInHistory, removeVideoFromHistory, removeAllVideoFromHistory };
+        removeVideoFromWatchLater, createPlaylist, addVideoToPlaylist, removePlaylist, removeVideoFromPlaylist,
+        addVideoInHistory, removeVideoFromHistory, removeAllVideoFromHistory };

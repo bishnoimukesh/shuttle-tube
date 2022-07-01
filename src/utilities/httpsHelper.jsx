@@ -29,7 +29,7 @@ const removeVideoFromLiked = async (videoId, VideoDispatch, token) => {
             headers: {authorization:  token}
         })
         VideoDispatch({
-            type: "ADD_LIKEDVIDEO",
+            type: "REMOVE_LIKEDVIDEO",
             payload: data.likes
         })
     } catch (error) {
@@ -57,7 +57,7 @@ const removeVideoFromWatchLater = async (videoId, VideoDispatch, token) => {
             headers: {authorization:  token}
         })
         VideoDispatch({
-            type: "ADD_WATCH_LATER",
+            type: "REMOVE_FROM_WATCH_LATER",
             payload: data.watchlater
         })
     } catch (error) {
@@ -72,7 +72,6 @@ const createPlaylist = async (playlistTitle, VideoDispatch, token) => {
                 authorization:  token
             }
         },)
-        console.log(data)
         VideoDispatch({
             type: "CREATE_PLAYLIST",
             payload: data.playlists
@@ -97,12 +96,10 @@ const addVideoToPlaylist = async (video,playlistId, VideoDispatch, token) => {
 }
 
 const addVideoInHistory = async (video, VideoDispatch, token) => {
-    console.log("history")
     try {
         const {data} = await axios.post("/api/user/history",{video}, {
             headers: {authorization:  token}
         },)
-        console.log({data})
         VideoDispatch({
             type: "ADD_HISTORY",
             payload: data.history

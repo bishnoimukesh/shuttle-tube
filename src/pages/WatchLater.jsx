@@ -18,12 +18,12 @@ const WatchLater = () => {
                         <Navbar/>
                 </GridItem>
                 <GridItem colSpan={4} >
-                    <Box ml={'4'} mr={'4'} pb={'8'} >
-                        {watchLaterList.map((video, index) => (
+                    <Box ml={'4'} mr={'4'} pb={'8'} display={'flex'} flexWrap={'wrap'}>
+                        {watchLaterList.map((video) => (
                             <Box position={'relative'}>
                                 <Card cardData={video} key={video._id} />
                                 <Button position={'absolute'} bg={'red'} top={'0'} borderRadius={'10'} p={'2'} 
-                                id={video._id} onClick={(e)=>removeVideoFromWatchLater(e.target.id,VideoDispatch,token)}>
+                                onClick={()=>removeVideoFromWatchLater(video._id,VideoDispatch,token)}>
                                     <BsStopwatchFill size={'1.5rem'}/>
                                 </Button>
                             </Box> 

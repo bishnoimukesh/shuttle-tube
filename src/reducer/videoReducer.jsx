@@ -10,7 +10,18 @@ const VideoReducer = (state, {type, payload}) => {
                 ...state,
                 LikedVideos: payload
             }
+            case "REMOVE_LIKEDVIDEO":
+                console.log(payload);
+            return{
+                ...state,
+                LikedVideos: payload
+            }
             case "ADD_WATCH_LATER":
+                return{
+                    ...state,
+                    watchLaterList: payload
+                }
+            case "REMOVE_FROM_WATCH_LATER":
                 return{
                     ...state,
                     watchLaterList: payload

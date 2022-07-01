@@ -25,7 +25,7 @@ const History = () => {
                             <Box position={'relative'}>
                             <Card cardData={video} key={video._id} />
                             <Button position={'absolute'} bg={'red'} top={'0'} borderRadius={'10'} p={'2'} 
-                            id={video._id} onClick={(e)=>removeVideoFromHistory(e.target.id,VideoDispatch,token)}>
+                            onClick={()=>removeVideoFromHistory(video._id,VideoDispatch,token)}>
                                 <AiFillDelete size={'1.5rem'}/>
                             </Button>
                         </Box> 
